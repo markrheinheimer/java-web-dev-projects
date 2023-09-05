@@ -1,4 +1,4 @@
-package org.launchcode;
+package org.launchcode.restaurant;
 
 public class MenuItem {
     private double price;
@@ -27,5 +27,21 @@ public class MenuItem {
 
     public void setNew(boolean aNew) {
         isNew = aNew;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public boolean isNew() {
+        return isNew;
     }
 }

@@ -1,5 +1,7 @@
 package org.launchcode;
 
+import java.util.Objects;
+
 public class Student {
 
     private static int nextStudentId = 1;
@@ -28,22 +30,45 @@ public class Student {
         return (this.name + " has a GPA of: " + this.gpa);
     }
 
+    public static String getGradeLevel(int credits) {
+       String gradeLevel;
 
-    //TODO: Uncomment and complete the getGradeLevel method here:
-//    public String getGradeLevel() {
-//        // Determine the grade level of the student based on numberOfCredits
-//    }
+       if (credits >= 90) gradeLevel = "Senior";
+       else if (credits >= 60) gradeLevel = "Junior";
+       else if (credits >= 30) gradeLevel = "Sophomore";
+       else gradeLevel = "Freshman";
 
-    // TODO: Complete the addGrade method.
-    public void addGrade(int courseCredits, double grade) {
-        // Update the appropriate fields: numberOfCredits, gpa
+       return gradeLevel;
     }
 
-    // TODO: Add your custom 'toString' method here. Make sure it returns a well-formatted String rather
-    //  than just the class fields.
+    public void addGrade(int courseCredits, double grade) {
+        int newTotalCredits = this.numberOfCredits + courseCredits;
+        this.gpa = ((this.numberOfCredits * this.gpa) + (courseCredits * grade)) / newTotalCredits;
+        this.numberOfCredits = newTotalCredits;
+    }
 
-    // TODO: Add your custom 'equals' method here. Consider which fields should match in order to call two
-    //  Student objects equal.
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return studentId == student.studentId && Objects.equals(name, student.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, studentId);
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", studentId=" + studentId +
+                ", numberOfCredits=" + numberOfCredits +
+                ", gpa=" + gpa +
+                '}';
+    }
 
     public String getName() {
         return name;
