@@ -30,4 +30,24 @@ public class Menu {
     public ArrayList<MenuItem> getItems() {
         return items;
     }
+
+    public void addMenuItem(MenuItem item) {
+        items.add(item);
+    }
+
+    public void removeMenuItem(MenuItem item) {
+        items.remove(item);
+    }
+
+    public void printMenuItem(MenuItem item) {
+        System.out.println(item);
+        }
+
+    public void printMenu(Menu menu) {
+        for (MenuItem item : items) {
+            System.out.println(item);
+        }
+
+
+    }
 }
