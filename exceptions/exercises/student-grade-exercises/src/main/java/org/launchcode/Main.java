@@ -8,6 +8,7 @@ public class Main {
 
         try {
             System.out.println(Divide(10, 2) + "\n");
+
             System.out.println(Divide(10, 0) + "\n");
         } catch (ArithmeticException e) {
             System.err.println("An arithmetic exception occurred:\n");
